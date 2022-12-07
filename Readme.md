@@ -1,6 +1,6 @@
 **Usage:**  
 
-`docker run --publish 8000:8000 --env BASE_URL=https://example.com --env TITLE="URL Shortener" --env DESCRIPTION="Create Your Short URL Here" --name shortener --detach alirn76/url-shortener:v1.1`
+`docker run --publish 8000:8000 --env BASE_URL=https://example.com --env TITLE="URL Shortener" --env DESCRIPTION="Create Your Short URL Here" --name shortener --detach alirn76/url-shortener:v1`
 
 *   It starts at **port 8000**, so you can publish it in any port you want.
 *   **BASE\_URL:** It is used to show the shortened URL to the user **( default:** [_http://127.0.0.1:8000_](http://127.0.0.1:8000) **)**
@@ -21,6 +21,7 @@
 
 **Source Code** → [https://github.com/AliRn76/shortener](https://github.com/AliRn76/shortener)
 
-**Docker Image** → [https://hub.docker.com/r/alirn76/url-shortener](https://hub.docker.com/r/alirn76/url-shortener)
+**Docker Image** → [https://hub.docker.com/r/alirn76/url-shortener](https://hub.docker.com/r/alirn76/url-shortener)   
+ 
 
-Thanks to MohammadReza Shahbazi
+> Thanks to [MohammadReza Shahbazi](https://www.linkedin.com/in/mohammadrezashahbazi/)
