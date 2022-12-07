@@ -23,4 +23,4 @@
 
 **Docker Image** → [https://hub.docker.com/r/alirn76/url-shortener](https://hub.docker.com/r/alirn76/url-shortener)
 
-Tanks to MohammadReza Shahbazi
+Thanks to MohammadReza Shahbazi
