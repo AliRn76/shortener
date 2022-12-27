@@ -8,17 +8,17 @@ This is achieved by using a redirect which links to the web page that has a long
 
 ## Simple usage:
 
-`docker run --name shortener -d alirn76/url-shortener:v1.3`
+`docker run --name shortener -d alirn76/url-shortener:latest`
 
 ## Options:
 
 ### Publish: 
-Instance starts at **port 8000**, so you can publish it in any port you want.
+The instance starts at **port 8000**, so you can publish it in any port you want.
 
 ### WORKER:
  **Default** is `2`
 
-Instance starts with how many workers
+The instance starts with how many workers?
 
 ### BASE\_URL:
 
@@ -34,7 +34,7 @@ Instance starts with how many workers
 **Default** is `false`
 
 Check the `BASE_URL` in _Original URL_
-> _It won't work correct if `BASE_URL` is ip_ 
+> _It won't work correctly if `BASE_URL` is ip_ 
 
 **example**:
 
@@ -51,7 +51,7 @@ Check the `BASE_URL` in _Original URL_
 
 **Default** is `"URL Shortener"`
 
-Used to show the **Title** of page _(you can put you website name in it)_
+Used to show the **Title** of page _(you can put your website name in it)_
 
 ### DESCRIPTION:
 
@@ -60,7 +60,7 @@ Used to show the **Title** of page _(you can put you website name in it)_
 
 ## Full-featured usage:
 
-`docker run --name shortener --restart always -p 80:8000 -e WORKER=1 -e BASE_URL=https://example.com -e PRIVATE=true -e TITLE="URL Shortener" -e DESCRIPTION="Create Your Short URL Here" -d alirn76/url-shortener:v1.3`
+`docker run --name shortener --restart always -p 80:8000 -e WORKER=1 -e BASE_URL=https://example.com -e PRIVATE=true -e TITLE="URL Shortener" -e DESCRIPTION="Create Your Short URL Here" -d alirn76/url-shortener:latest`
 
 
 ## Persistent Storage:
@@ -72,9 +72,6 @@ Used to show the **Title** of page _(you can put you website name in it)_
 ## Demo:
 ![demo](sample.png)
 
-
-> ### Source Code → [https://github.com/AliRn76/shortener](https://github.com/AliRn76/shortener)
-
 > ### Docker Image → [https://hub.docker.com/r/alirn76/url-shortener](https://hub.docker.com/r/alirn76/url-shortener)
 
-> ### Thanks to [MohammadReza Shahbazi](https://www.linkedin.com/in/mohammadrezashahbazi/) for Frontend
+> #### Thanks to [MohammadReza Shahbazi](https://www.linkedin.com/in/mohammadrezashahbazi/) for Frontend
