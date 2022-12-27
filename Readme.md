@@ -1,16 +1,69 @@
-**Usage:**  
+# What is URL Shortener?
 
-`docker run --publish 8000:8000 --env BASE_URL=https://example.com --env TITLE="URL Shortener" --env DESCRIPTION="Create Your Short URL Here" --name shortener --detach alirn76/url-shortener:v1`
+URL shortening is a technique on the World Wide Web in which a Uniform Resource Locator may be made substantially shorter and still direct to the required page. 
+This is achieved by using a redirect which links to the web page that has a long URL.
 
-*   It starts at **port 8000**, so you can publish it in any port you want.
-*   **BASE\_URL:** It is used to show the shortened URL to the user **( default:** [_http://127.0.0.1:8000_](http://127.0.0.1:8000) **)**
-*   **TITLE:** For customizing the title **( default:** _URL Shortener_ **)**
-*   **DESCRIPTION:** For customizing the description **( default:** _Create Short & Memorable URL In a Seconds._ **)**
+# How to use this image
 
-**Persistent Storage:**
+## Simple usage:
+
+`docker run --name shortener -d alirn76/url-shortener:v1.2`
+
+## Options:
+
+### Publish: 
+Instance starts at **port 8000**, so you can publish it in any port you want.
+
+`docker run --name shortener -p 80:8000 -d alirn76/url-shortener:v1.2`
+
+### BASE\_URL:
+
+**Default** is [_http://127.0.0.1:8000_](http://127.0.0.1:8000)
+
+**Usage:**
+1. Show the _Shortened URL_ for copy 
+2. Check the _Original URL_ if **PRIVATE** is `true`
+
+`docker run --name shortener -e BASE_URL=https://url.example.com -p 80:8000 -d alirn76/url-shortener:v1.2`
+
+### PRIVATE:
+
+**Default** is `false`
+
+Check the `BASE_URL` in _Original URL_
+
+**example**:
+- `BASE_URL` = https://alirn.ir
+
+- `Original URL` = https://google.com/something/  --> `Not Valid`
+- `Original URL` = https://alirn.ir/something --> `OK`
+- `Original URL` = http://alirn.ir/something --> `OK`
+- `Original URL` = https://api.alirn.ir/something --> `OK`
+- `Original URL` = https://alirn.ir.google.com/ --> `Not Valid`
+    
+
+`docker run --name shortener -e BASE_URL=https://url.example.com -e PRIVATE=true -p 80:8000 -d alirn76/url-shortener:v1.2`
+
+### TITLE:
+
+**Default** is `URL Shortener`
+
+Used to show the **Title** of page _(you can put you website name in it)_
+
+### DESCRIPTION:
+
+**Default** is `Create Short & Memorable URL In a Seconds.`
+
+
+## Full-featured usage:
+
+`docker run --name shortener -e BASE_URL=https://example.com -e TITLE="URL Shortener" -e DESCRIPTION="Create Your Short URL Here" -e PRIVATE=true  -d alirn76/url-shortener:v1.2`
+
+
+## Persistent Storage:
 
 1.  Create docker volume → `docker volume create shortener-volume`
-2.  Add this to the run command → `--volume shortener-volume:/shortener/database`
+2.  Add volume to you run command → `--volume shortener-volume:/shortener/database`
 
 **Technology Used:**
 
@@ -21,7 +74,6 @@
 
 **Source Code** → [https://github.com/AliRn76/shortener](https://github.com/AliRn76/shortener)
 
-**Docker Image** → [https://hub.docker.com/r/alirn76/url-shortener](https://hub.docker.com/r/alirn76/url-shortener)   
- 
+**Docker Image** → [https://hub.docker.com/r/alirn76/url-shortener](https://hub.docker.com/r/alirn76/url-shortener)
 
 > Thanks to [MohammadReza Shahbazi](https://www.linkedin.com/in/mohammadrezashahbazi/)
