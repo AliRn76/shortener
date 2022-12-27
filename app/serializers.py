@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from rest_framework.validators import ValidationError
 
-from config.settings import BASE_URL
+from config.settings import BASE_URL, PRIVATE
 
 
 class CreateSerializer(serializers.Serializer):
@@ -9,7 +9,6 @@ class CreateSerializer(serializers.Serializer):
     shortened = serializers.CharField(required=True)
 
     def validate_original(self, original):
-        # TODO: Make it configurable
-        if not original.startswith(BASE_URL):
+        if PRIVATE and '.'.join(original.split('.')[-2:]).split('/')[0] != BASE_URL:
             raise ValidationError('Invalid Original URL')
         return original

@@ -3,7 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.shortcuts import render, redirect
 
-from config.settings import BASE_URL, TITLE, DESCRIPTION
+from config.settings import BASE_URL, TITLE, DESCRIPTION, SHORTENER_URL
 from app.serializers import CreateSerializer
 from app.models import Url
 
@@ -14,9 +14,9 @@ class CreateAPIView(APIView):
         context = {'title': TITLE, 'description': DESCRIPTION}
         if serializer.is_valid():
             url = Url.objects.create(**serializer.validated_data)
-            context['shortened'] = f'{BASE_URL}/{url.shortened}'
+            context['shortened'] = f'{SHORTENER_URL}/{url.shortened}'
         else:
-            context['shortened'] = 'Invalid URL'
+            context['error'] = f'Original URL should contain {BASE_URL}'
         return render(request, 'index.html', context=context)
 
     def get(self, request, *args, **kwargs):
