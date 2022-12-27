@@ -30,6 +30,7 @@ Instance starts at **port 8000**, so you can publish it in any port you want.
 **Default** is `false`
 
 Check the `BASE_URL` in _Original URL_
+> _It won't work correct if `BASE_URL` is ip_ 
 
 **example**:
 
