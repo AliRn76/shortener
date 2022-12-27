@@ -15,6 +15,10 @@ This is achieved by using a redirect which links to the web page that has a long
 ### Publish: 
 Instance starts at **port 8000**, so you can publish it in any port you want.
 
+### WORKER:
+ **Default** is `2`
+
+Instance starts with how many workers
 
 ### BASE\_URL:
 
@@ -56,7 +60,7 @@ Used to show the **Title** of page _(you can put you website name in it)_
 
 ## Full-featured usage:
 
-`docker run --name shortener -p 80:8000 -e BASE_URL=https://example.com -e PRIVATE=true -e TITLE="URL Shortener" -e DESCRIPTION="Create Your Short URL Here" -d alirn76/url-shortener:v1.2`
+docker run --name shortener -p 80:8000 -e WORKER=1 -e BASE_URL=https://example.com -e PRIVATE=true -e TITLE="URL Shortener" -e DESCRIPTION="Create Your Short URL Here" -d alirn76/url-shortener:v1.2
 
 
 ## Persistent Storage:
