@@ -64,7 +64,7 @@ Used to show the **Title** of page _(you can put your website name in it)_
 
 
 ## Persistent Storage:
-
+> **Known Issue:** You'll get 5xx error if you don't create a docker volume.
 -   1.  Create docker volume → `docker volume create shortener-volume`
 -   2. Add volume to you run command → `--volume shortener-volume:/shortener/database`
 
