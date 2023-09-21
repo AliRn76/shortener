@@ -12,9 +12,10 @@ ALLOWED_HOSTS = ['*']
 DEBUG = False
 
 SHORTENER_URL = os.environ.get('BASE_URL', 'http://127.0.0.1:8000').strip().lower()
-SHORTENER_URL.removesuffix('/')  # ex: http://127.0.0.1:8000
+SHORTENER_URL.removesuffix('/')  # ex: https://url.AliRn.ir
 
-BASE_URL = urlparse(SHORTENER_URL).netloc  # ex: 127.0.0.1:8000
+BASE_URL = urlparse(SHORTENER_URL).hostname.split('.')[-2:]  # ex: [AliRn, ir]
+BASE_URL = '.'.join(BASE_URL)  # AliRn.ir
 
 TITLE = os.environ.get('TITLE', 'URL Shortener')
 DESCRIPTION = os.environ.get('DESCRIPTION', 'Create Short & Memorable URL In a Seconds.')
