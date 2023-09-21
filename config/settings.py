@@ -1,6 +1,8 @@
 import os
 import re
 from pathlib import Path
+from urllib.parse import urlparse
+
 from django.core.management import utils
 
 
@@ -10,11 +12,9 @@ ALLOWED_HOSTS = ['*']
 DEBUG = False
 
 SHORTENER_URL = os.environ.get('BASE_URL', 'http://127.0.0.1:8000').strip().lower()
-if SHORTENER_URL[-1] == '/':
-    # ex: https://alirn.ir/ --> https://alirn.ir
-    SHORTENER_URL = SHORTENER_URL[:-1]
-matched = re.match(r'^.+?[^\/:](?=[?\/]|$)', SHORTENER_URL)
-BASE_URL = '.'.join(matched.group().split('.')[-2:])  # ex: 127.0.0.1:8000
+SHORTENER_URL.removesuffix('/')  # ex: http://127.0.0.1:8000
+
+BASE_URL = urlparse(SHORTENER_URL).netloc  # ex: 127.0.0.1:8000
 
 TITLE = os.environ.get('TITLE', 'URL Shortener')
 DESCRIPTION = os.environ.get('DESCRIPTION', 'Create Short & Memorable URL In a Seconds.')
