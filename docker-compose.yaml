@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  shortener:
+    image: alirn76/url-shortener:latest
+    command: "start"
+    ports:
+      - 8000:8000
+    volumes:
+      - shortener:/shortener/database:rw
+    restart: always
+    env_file:
+    - .env.example
+
+volumes:
+  shortener:
+
