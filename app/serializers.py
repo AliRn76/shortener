@@ -11,7 +11,6 @@ class CreateSerializer(serializers.Serializer):
     shortened = serializers.CharField(required=True)
 
     def validate_original(self, original):
-        original_url = urlparse(original).netloc
-        if PRIVATE and original_url != BASE_URL:
+        if PRIVATE and not urlparse(original).netloc.endswith(BASE_URL):
             raise ValidationError('Invalid Original URL')
         return original
