@@ -1,17 +1,17 @@
-version: '3.7'
+volumes:
+  shortener_volume:
 
 services:
   shortener:
     image: alirn76/url-shortener:latest
-    command: "start"
+    restart: always
     ports:
       - 8000:8000
     volumes:
-      - shortener:/shortener/database:rw
-    restart: always
-    env_file:
-    - .env.example
-
-volumes:
-  shortener:
-
+      - shortener:/shortener/database
+    environment:
+      WORKER: 1
+      PRIVATE: true
+      BASE_URL: "https://example.com"
+      TITLE: "Simple URL Shortener"
+      DESCRIPTION: Create Short & Memorable URL In a Seconds."
